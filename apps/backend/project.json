@@ -1,21 +1,21 @@
 {
-  "name": "bull-separate-process",
+  "name": "backend",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/bull-separate-process/src",
+  "sourceRoot": "apps/backend/src",
   "projectType": "application",
   "targets": {
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "bull-separate-process:build"
+        "buildTarget": "backend:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "bull-separate-process:build:development"
+          "buildTarget": "backend:build:development"
         },
         "production": {
-          "buildTarget": "bull-separate-process:build:production"
+          "buildTarget": "backend:build:production"
         }
       }
     }
