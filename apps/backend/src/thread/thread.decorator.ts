@@ -15,12 +15,11 @@ export const RunInThread =
             responseToMainThread
           )
 
-        const payload: ThreadPayload = {
+        return spawnNewThread({
           className,
           methodName,
           argsJson: JSON.stringify(argArray),
-        }
-        return spawnNewWorker(payload)
+        })
       },
     })
   }
@@ -29,7 +28,7 @@ function responseToMainThread(data: unknown) {
   parentPort.postMessage(data)
 }
 
-function spawnNewWorker(payload: ThreadPayload) {
+function spawnNewThread(payload: ThreadPayload) {
   return new Promise((resolve, reject) => {
     const worker = new Worker(__filename, { workerData: payload })
     worker.once('message', resolve)
